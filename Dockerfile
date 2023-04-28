@@ -15,7 +15,9 @@
 #
 FROM quay.io/codait/max-base:v1.4.0
 
-ARG model_bucket=https://max-cdn.cdn.appdomain.cloud/max-audio-embedding-generator/1.0.0
+ENV PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python
+
+ARG model_bucket=https://codait-cos-max.s3.us.cloud-object-storage.appdomain.cloud/max-audio-embedding-generator/1.0.0
 ARG model_file=assets.tar.gz
 
 RUN wget -nv --show-progress --progress=bar:force:noscroll ${model_bucket}/${model_file} --output-document=assets/${model_file} && \
